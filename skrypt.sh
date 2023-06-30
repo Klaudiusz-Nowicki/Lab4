@@ -16,12 +16,17 @@ if [[ "$1" == "--logs"  "$1" == "-l" ]]; then
             echo "Script name: script.sh" >> "$filename"
             echo "Date: $(date)" >> "$filename"
       done
-fi
+elif [["$1" == "--init"  "$1" == "-i"]]; then
+    git clone https://github.com/Igor-Nowakowski97/DSW-Lab4
+    export PATH"$PWD:$PATH"
+    echo "The repository has been cloned to the current directory".
+    echo "The path to the repository added added to the PATH environment variable."
 
-if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+elif [[ "$1" == "--help"  "$1" == "-h" ]]; then
       echo "Available options:"
       echo "--date, -d: Displays today's date."
       echo "--logs, -l <number_files>: Creates the specified number of logx.txt files, containing the file name, script name and date."
+    echo "--init, -i: Clones the repository and adds the PATH environment variable."
 else
       echo "Unknown option. Use 'script.sh --help' to display available options."
 fi
